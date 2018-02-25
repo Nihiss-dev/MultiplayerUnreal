@@ -54,6 +54,9 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "Gameplay")
 	bool bIsCarryingObjective;
 
+	UFUNCTION(Server, Reliable, WithValidation)
+	void ServerFire();
+
 protected:
 	
 	/** Fires a projectile. */
@@ -74,5 +77,6 @@ public:
 	/** Returns FirstPersonCameraComponent subobject **/
 	UCameraComponent* GetFirstPersonCameraComponent() const { return CameraComponent; }
 
+	virtual void Tick(float DeltaTime) override;
 };
 
